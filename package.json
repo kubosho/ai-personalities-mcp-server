@@ -1,0 +1,42 @@
+{
+  "name": "ai-personalities",
+  "version": "1.0.0",
+  "description": "AI personalities",
+  "private": true,
+  "keywords": [
+    "AI"
+  ],
+  "homepage": "https://github.com/kubosho/ai-personalities#readme",
+  "bugs": {
+    "url": "https://github.com/kubosho/ai-personalities/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kubosho/ai-personalities.git"
+  },
+  "license": "MIT",
+  "author": "kubosho",
+  "type": "module",
+  "scripts": {
+    "fix": "run-p fix:*",
+    "fix:markdown": "markdownlint --ignore node_modules/ --fix .",
+    "fix:prettier": "prettier --write .",
+    "fix:text": "textlint --fix .",
+    "lint": "run-p lint:*",
+    "lint:markdown": "markdownlint --ignore node_modules/ . ",
+    "lint:prettier": "prettier --check .",
+    "lint:text": "textlint ."
+  },
+  "devDependencies": {
+    "@kubosho/configs": "6.0.9",
+    "markdownlint": "0.38.0",
+    "markdownlint-cli": "0.44.0",
+    "npm-run-all2": "8.0.2",
+    "prettier": "3.5.3",
+    "textlint": "14.7.1",
+    "textlint-filter-rule-comments": "1.2.2",
+    "textlint-rule-no-dead-link": "5.2.0",
+    "textlint-rule-no-doubled-joshi": "5.1.0",
+    "textlint-rule-preset-jtf-style": "3.0.2"
+  }
+}
