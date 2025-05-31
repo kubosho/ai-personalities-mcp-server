@@ -53,5 +53,8 @@ __pycache__/
 # Environments
 .venv/
 
+# mypy stuff
+.mypy_cache/
+
 # Ruff stuff
 .ruff_cache/
