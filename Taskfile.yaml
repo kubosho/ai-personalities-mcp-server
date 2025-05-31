@@ -1,0 +1,47 @@
+version: '3'
+
+tasks:
+  check:format:
+    desc: 'Run format check with Ruff'
+    cmd: uv run ruff format . --check
+
+  check:type:
+    desc: 'Run type check with mypy'
+    cmd: uv run mypy src
+
+  lint:markdown:
+    desc: 'Run Textlint for personality files'
+    cmd: npm run lint
+
+  lint:source:
+    desc: 'Run linter with Ruff'
+    cmd: uv run ruff check .
+
+  fix:lint:markdown:
+    desc: 'Run Textlint for personality files and fix auto-fixable issues'
+    cmd: npm run fix
+
+  fix:lint:source:
+    desc: 'Run linter with Ruff and fix auto-fixable issues'
+    cmd: uv run ruff check . --fix
+
+  format:
+    desc: 'Run formatter with Ruff'
+    cmd: uv run ruff format .
+
+  # --------------------------------------------------
+
+  check:
+    desc: 'Run all checks'
+    deps:
+      - check:format
+      - check:type
+      - lint:markdown
+      - lint:source
+
+  fix:
+    desc: 'Fix auto-fixable issues'
+    deps:
+      - fix:lint:markdown
+      - fix:lint:source
+      - format
