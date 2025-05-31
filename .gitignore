@@ -1,5 +1,24 @@
+# --------------------------------------------------
+# General
+# --------------------------------------------------
+
 # Cursor Project Rules
 .cursor/rules/*
+
+# dotenv environment variables file
+.env
+.env.*
+
+# --------------------------------------------------
+# Workspace
+# --------------------------------------------------
+
+# ChromaDB
+chroma_db/
+
+# --------------------------------------------------
+# Node.js
+# --------------------------------------------------
 
 # Logs
 logs
@@ -16,28 +35,23 @@ pids
 *.seed
 *.pid.lock
 
-# Coverage directory used by tools like istanbul
-coverage
-*.lcov
-
 # Dependency directories
 node_modules/
 
-# TypeScript cache
-*.tsbuildinfo
+# --------------------------------------------------
+# Python
+# --------------------------------------------------
 
-# Optional npm cache directory
-.npm
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Optional eslint cache
-.eslintcache
+# C extensions
+*.so
 
-# Optional REPL history
-.node_repl_history
+# Environments
+.venv/
 
-# Output of 'npm pack'
-*.tgz
-
-# dotenv environment variables file
-.env
-.env.*
+# Ruff stuff
+.ruff_cache/
