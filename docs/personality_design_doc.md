@@ -66,8 +66,24 @@ CursorなどのAIエージェントを使うにあたり、AIエージェント�
 3. キャラクター名をメタデータに付与してキャラクター別の検索を可能にする
 4. ベクトル埋め込みを自動生成してセマンティック検索を実現
 
-```shell
-python -m ai_personalities.load_chunks_to_chroma --chunks-dir "path/to/chunks" --character-name "篠澤広"
+```bash
+# コマンドラインツールを使用
+uv run ai-personalities-load --chunks-dir /path/to/personality/chunks
+```
+
+```bash
+# 環境変数を使用
+export CHUNKS_DIR=/path/to/personality/chunks
+uv run ai-personalities-load
+```
+
+```bash
+# カスタム設定を使用
+uv run ai-personalities-load \
+  --chunks-dir /path/to/chunks \
+  --db-path ./custom_db \
+  --collection-name my_character \
+  --character-name "篠澤広"
 ```
 
 ### ChromaDBをローカル上で起動する
@@ -80,8 +96,9 @@ MCP（Model Context Protocol）サーバーとしてChromaDBを起動する。
 2. **get_character_dialogue_style**: 対話スタイル情報を取得
 3. **get_character_traits**: 人格特性を取得
 
-```shell
-python -m ai_personalities.mcp_chroma_server
+```bash
+# MCPサーバーを起動
+uv run ai-personalities-mcp
 ```
 
 これでCursorなどのMCP対応AIツールから、人格データに動的にアクセスできるようになる。
@@ -94,6 +111,9 @@ python -m ai_personalities.mcp_chroma_server
 [required]
 影響を受けるファイルを書く。
 -->
+
+- `src/` ディレクトリ内のソースコード
+- `personalities/` ディレクトリ内の人格データ
 
 ## 想定される問題 / Drawback, Risk
 
@@ -108,6 +128,11 @@ python -m ai_personalities.mcp_chroma_server
 ただ今回[system-prompt.md](../personalities/shinosawa_hiro/system-prompt.md)で引用した部分はプロフィールのみで、他の篠澤広に対する洞察は私が考えたものとなる。
 
 またゲーム内のセリフやネタバレはローカルで起動するChromaDB内にベクトルデータとして持たせるようにし、元となるテキストファイルもローカル上でのみ持つことで個人利用の範囲に収められそう。
+
+### 技術的なリスク
+
+- ChromaDBが最低2GBのRAMを要求することで、リソースが限られた環境では動作が困難となる
+- ベクトル検索の精度がキャラクターの再現性に影響する
 
 ## 他の手段 / Alternative approach
 
@@ -126,6 +151,13 @@ python -m ai_personalities.mcp_chroma_server
 
 またバックアップやセキュリティ面の管理コストが増加したり、個人で使う分にはローカルでChromaDBを起動しておくので十分と判断し、今回はChromaDBのホスティングをやめた。
 
+### 他のベクトルデータベースの検討
+
+ChromaDBを使うようにしたのはAIによってサジェストされたため。場合によっては下記のベクドルデータベースを使うことも考えられる。
+
+- [Weaviate](https://github.com/weaviate/weaviate)
+- [Qdrant](https://github.com/qdrant/qdrant)
+
 ## 関連リンク / Related link
 
 <!--
@@ -135,3 +167,11 @@ python -m ai_personalities.mcp_chroma_server
 - [著作権法における引用について – ゲーム保存協会](https://www.gamepres.org/media/contents/fairuse/)
 - [篠澤 広 ｜ 学園アイドルマスター（学マス）｜君と出会い、夢に翔ける](https://gakuen.idolmaster-official.jp/idol/hiro/)
 - [「学園アイドルマスター」応援広告規程 ｜ 学園アイドルマスター（学マス）｜君と出会い、夢に翔ける](https://gakuen.idolmaster-official.jp/media/fankit/terms-of-cheering-ad/)
+
+### プロトコル・ツールの各種ドキュメント
+
+- [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction)
+- [ChromaDB Documentation](https://docs.trychroma.com/docs/overview/introduction)
+- [uv Documentation](https://docs.astral.sh/uv/)
+- [Task Documentation](https://taskfile.dev/)
+- [mise Documentation](https://mise.jdx.dev/)
