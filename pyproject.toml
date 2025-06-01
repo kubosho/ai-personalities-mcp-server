@@ -13,12 +13,12 @@ requires-python = ">=3.13"
 classifiers = ["Private :: Do Not Upload"]
 dependencies = ["chromadb==1.0.12", "mcp==1.9.2", "python-frontmatter==1.1.0"]
 
+[dependency-groups]
+dev = ["mypy==1.15.0", "ruff==0.11.12"]
+
 [project.scripts]
 ai-personalities-mcp = "ai_personalities.mcp_chroma_server:main"
 ai-personalities-load = "ai_personalities.load_chunks_to_chroma:main"
-
-[dependency-groups]
-dev = ["mypy==1.15.0", "ruff==0.11.12"]
 
 [tool.mypy]
 python_version = "3.13"
@@ -36,13 +36,10 @@ warn_unused_configs = true
 warn_unused_ignores = true
 
 [tool.ruff]
-ignore = []
 line-length = 120
-select = ["E", "F", "W", "I"]
+lint.ignore = []
+lint.select = ["E", "F", "I", "W"]
 target-version = "py313"
-
-[tool.ruff.per-file-ignores]
-"__init__.py" = ["F401"]
 
 [tool.uv]
 package = true
