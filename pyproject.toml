@@ -17,8 +17,8 @@ dependencies = ["chromadb==1.0.12", "mcp==1.9.2", "python-frontmatter==1.1.0"]
 dev = ["mypy==1.15.0", "ruff==0.11.12"]
 
 [project.scripts]
-ai-personalities-mcp = "ai_personalities.mcp_chroma_server:main"
-ai-personalities-load = "ai_personalities.load_chunks_to_chroma:main"
+ai-personalities-mcp = "ai_personalities.mcp_server:main"
+ai-personalities-load = "ai_personalities.personality_data_loader:main"
 
 [tool.mypy]
 python_version = "3.13"
