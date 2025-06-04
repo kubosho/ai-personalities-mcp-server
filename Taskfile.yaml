@@ -25,10 +25,6 @@ tasks:
     desc: 'Run linter with Ruff and fix auto-fixable issues'
     cmd: uv run ruff check . --fix
 
-  format:
-    desc: 'Run formatter with Ruff'
-    cmd: uv run ruff format .
-
   # --------------------------------------------------
 
   check:
@@ -44,4 +40,3 @@ tasks:
     deps:
       - fix:lint:markdown
       - fix:lint:source
-      - format

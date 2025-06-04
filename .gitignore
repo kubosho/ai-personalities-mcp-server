@@ -2,6 +2,10 @@
 # General
 # --------------------------------------------------
 
+# Claude
+.claude/
+CLAUDE.md
+
 # Cursor Project Rules
 .cursor/rules/*
 
