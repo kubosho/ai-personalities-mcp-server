@@ -18,7 +18,7 @@ ai-personalities-mcp = "ai_personalities.mcp_chroma_server:main"
 ai-personalities-load = "ai_personalities.load_chunks_to_chroma:main"
 
 [dependency-groups]
-dev = ["mypy==1.15.0", "ruff==0.11.12"]
+dev = ["mypy==1.15.0", "ruff==0.11.13"]
 
 [tool.mypy]
 python_version = "3.13"
