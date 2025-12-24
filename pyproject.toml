@@ -11,7 +11,7 @@ readme = "README.md"
 urls = { Homepage = "https://github.com/kubosho/ai-personalities", Repository = "https://github.com/kubosho/ai-personalities", Issues = "https://github.com/kubosho/ai-personalities/issues" }
 requires-python = ">=3.13"
 classifiers = ["Private :: Do Not Upload"]
-dependencies = ["chromadb==1.0.12", "mcp==1.9.2", "python-frontmatter==1.1.0"]
+dependencies = ["chromadb==1.0.21", "mcp==1.9.2", "python-frontmatter==1.1.0"]
 
 [project.scripts]
 ai-personalities-mcp = "ai_personalities.mcp_chroma_server:main"
